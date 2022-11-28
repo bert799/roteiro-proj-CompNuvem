@@ -1,0 +1,479 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+    
+    
+      
+        <title>Projeto: Computação Nuvem - Infraestrutura por Código</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.472b142f.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.08040f6c.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#ffffff">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="pink">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#infraestrutura-por-codigo-aplicacao-em-python-para-gerenciar-infraestrutura-construida-com-terraform" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Projeto: Computação Nuvem - Infraestrutura por Código" class="md-header__button md-logo" aria-label="Projeto: Computação Nuvem - Infraestrutura por Código" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Projeto: Computação Nuvem - Infraestrutura por Código
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Home
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Projeto: Computação Nuvem - Infraestrutura por Código" class="md-nav__button md-logo" aria-label="Projeto: Computação Nuvem - Infraestrutura por Código" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Projeto: Computação Nuvem - Infraestrutura por Código
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Home
+      </a>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="infraestrutura-por-codigo-aplicacao-em-python-para-gerenciar-infraestrutura-construida-com-terraform">Infraestrutura por Código - Aplicação em Python para gerenciar infraestrutura construída com Terraform<a class="headerlink" href="#infraestrutura-por-codigo-aplicacao-em-python-para-gerenciar-infraestrutura-construida-com-terraform" title="Permanent link">&para;</a></h1>
+<ul>
+<li><strong>Aluno:</strong> Bernardo Cunha Capoferri</li>
+<li><strong>Curso:</strong> Engenharia da Computação</li>
+<li><strong>Semestre:</strong> 6</li>
+<li><strong>Contato:</strong> <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#101;&#114;&#110;&#97;&#114;&#100;&#111;&#99;&#99;&#64;&#97;&#108;&#46;&#105;&#110;&#115;&#112;&#101;&#114;&#46;&#101;&#100;&#117;&#46;&#98;&#114;">&#98;&#101;&#114;&#110;&#97;&#114;&#100;&#111;&#99;&#99;&#64;&#97;&#108;&#46;&#105;&#110;&#115;&#112;&#101;&#114;&#46;&#101;&#100;&#117;&#46;&#98;&#114;</a></li>
+<li><strong>Ano:</strong> 2022</li>
+</ul>
+<p>Agradecimentos a Francisco Pinheiro Janela por permitir o uso deste template.</p>
+<h1 id="como-operar-com-o-meu-programa">Como Operar com o meu programa:<a class="headerlink" href="#como-operar-com-o-meu-programa" title="Permanent link">&para;</a></h1>
+<h2 id="pre-requisitos">Pré-requisitos<a class="headerlink" href="#pre-requisitos" title="Permanent link">&para;</a></h2>
+<p>Para começar a operar com o meu programa, sigam o passo a passo de instalação indicado no readme do <a href="https://github.com/bert799/ProjetoCompNuvem">meu repositório</a> no github.</p>
+<h2 id="como-usar">Como usar<a class="headerlink" href="#como-usar" title="Permanent link">&para;</a></h2>
+<p>Ao iniciar o programa pela primeira vez, o usuário se depara com a escolha entre a a criação de recursos para a infraestrutura, podendo, nesse caminho, criar instâncias, security groups e habilitar a criação de um web-server <strong>HA</strong> (High Availability), Listar os recursos presentes na infraestrutura, onde o usuário pode verificar o estado desta antes de aplicá-la efetivamente, Apagar os recursos em sua infraestrutura e trocar a região na qual esta construindo sua infraestrutura.</p>
+<p>Para facilitar, a árvore de navegação abaixo, pode trazer mais facilidade para o usuário se encontrar pelo programa:</p>
+<div class="highlight"><pre><span></span><code>├── Create new infrastructure
+│   ├── Instance
+│   ├── Security Group
+│   ├── Security Group rule
+│   ├── User
+│   ├── High-availability web-service
+│   ├── Back
+│   
+├── List infrastructure
+│   ├── Instance
+│   ├── Security Group
+│   ├── User
+│   ├── High-availability web-service
+│   ├── Change region
+│   ├── Back
+│ 
+├── Delete infrastructure
+│   ├── Instance
+│   ├── Security Group
+│   ├── Security Group rule
+│   ├── User
+│   ├── High-availability web-service
+│   ├── Back
+│
+├── Change Region
+│
+├── Apply
+│
+├── Exit
+</code></pre></div>
+<p>Em sua maioria, as instruções de uso de cada uma das funcionalidades está autocontida no próprio programa, mas existem algumas considerações que podem ser feitas:</p>
+<h4 id="instancias">Instâncias<a class="headerlink" href="#instancias" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Ao Criar uma Instância, o usuário deve escolher o tipo de instância que deseja criar, e o nome da instância que deseja criar. O nome da instância deve ser único, ou seja, não pode haver duas instâncias com o mesmo nome na mesma região. O usuário também tem a opção de adicionar um Security group anteriormente definido a instância, caso contrário um padrão será criado.</li>
+</ul>
+<h4 id="security-groups">Security Groups<a class="headerlink" href="#security-groups" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Ao Criar um Security Group, o usuário deve escolher o nome do Security Group que deseja criar. O nome do Security Group deve ser único, ou seja, não pode haver dois Security Groups com o mesmo nome na mesma região. Além disso, poderá ser criado quantas regras de Ingress e Egress que o usuário desejar, se atentando somente à liberação de todas as portas para não correr riscos de segurança.</p>
+</li>
+<li>
+<p>Só será possível deletar um Security Group se ele não estiver sendo usado, ou seja, se quiser deletá-lo, deve remover todas as dependências dele nas instâncias da região.</p>
+</li>
+</ul>
+<h4 id="usuarios">Usuários<a class="headerlink" href="#usuarios" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Ao Criar um Usuário, o usuário deve escolher o nome do Usuário que deseja criar. O nome do Usuário deve ser único, ou seja, não pode haver dois Usuários com o mesmo nome na mesma região. Além disso, a senha aparecerá somente na criação deste, então guarde-a em um local seguro antes de continuar.</p>
+</li>
+<li>
+<p>Ao deletar um Usuário, o usuário não poderá ser recuperado, e todas as configurações de políticas atreladas também serão descartadas, mas as políticas em si ainda continuarão existindo.</p>
+</li>
+</ul>
+<h4 id="servico-web-high-availability">Serviço web High Availability<a class="headerlink" href="#servico-web-high-availability" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>O serviço de alta disponibilidade na web é fixo, podendo ser alterado um booleano que define se este será criado ou não e o par de chaves que será associado às instâncias.</p>
+</li>
+<li>
+<p>Para verificar o funcionamento do sistema de serviço na web é necessário acessar o DNS do load-balancer que é um dos <em>outputs</em> do Terraform, ou a partir do <em>dashboard</em> da AWS. A página deverá conter o ip interno da instancia e um valor de <em>nonce</em></p>
+</li>
+<li>
+<p>Para verificar a criação de uma nova instância automática acesse a instância via SSH, usando seu par de chaves e rode o comando:
+<div class="highlight"><pre><span></span><code>$ ssh ubuntu@&lt;ip da sua instância&gt;
+$ stress --cpu <span class="m">8</span> --timeout <span class="m">300</span>
+</code></pre></div>
+Espere entre 4-5 minutos e verifique se outra instância foi criada.</p>
+</li>
+</ul>
+<h1 id="tutorial-do-terraform">Tutorial do terraform:<a class="headerlink" href="#tutorial-do-terraform" title="Permanent link">&para;</a></h1>
+<h2 id="o-que-e-terraform">O que é Terraform?<a class="headerlink" href="#o-que-e-terraform" title="Permanent link">&para;</a></h2>
+<p>O terraform é um software de <em>Infrastructure as Code</em> (IaC) cuja a linguagem faz com que a criação de infraestrutura em diferente provedores de serviços na nuvem como AWS, Azure e mais seja fácil, rápido e mais importante, replicável.</p>
+<h2 id="estrutura-do-terraform">Estrutura do Terraform<a class="headerlink" href="#estrutura-do-terraform" title="Permanent link">&para;</a></h2>
+<p>O Terraform contém no mínimo um arquivo main.tf, ondem devem ser definido as seguintes configurações:</p>
+<ul>
+<li>os provedores dos serviços na nuvem</li>
+<li>A região na qual a infraestrutura será construida</li>
+</ul>
+<h3 id="recursos">Recursos<a class="headerlink" href="#recursos" title="Permanent link">&para;</a></h3>
+<p>Com estes items definidos é possível começar a criar sua infraestrutura, para isso o Terraform tem os <code>resources</code>, que efetivamente são as partes dela, como instâncias, grupos de segurança, VPCs etc...</p>
+<p>Exemplo de um <code>resource</code> de instânica aws:
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;app_server&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">ami</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-123&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="na">instance_type</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="na">associate_public_ip_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="w"></span>
+<span class="w">    </span><span class="na">key_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bernardo&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">subnet_id</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_subnet.subnet_projeto.id</span><span class="w"></span>
+<span class="w">    </span><span class="na">vpc_security_group_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;example_sec_group&quot;</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">    </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="na">Name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;exemplo&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>Com os recursos, o programador consegue criar elementos fixos, e assim como linguagens de código tradicional ele permite a criação de recursos com variáveis o que acaba sendo útil para criar recursos dinâmicamente.</p>
+<p>Exemplo de um <code>resource</code> de instânica aws com uso de variáveis:
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;app_server&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">ami</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="nv">var.image_id</span><span class="w"></span>
+<span class="w">    </span><span class="na">instance_type</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">var.host_type</span><span class="w"></span>
+<span class="w">    </span><span class="na">associate_public_ip_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="w"></span>
+<span class="w">    </span><span class="na">key_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bernardo&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">subnet_id</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_subnet.subnet_projeto.id</span><span class="w"></span>
+<span class="w">    </span><span class="na">vpc_security_group_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">var.sec_group</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">    </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="na">Name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">var.image_name</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<h3 id="variaveis">Variáveis<a class="headerlink" href="#variaveis" title="Permanent link">&para;</a></h3>
+<p>Mas ao contrário de linguagens tradicionais, não é possível simplesmente declarar variáveis, para isso é necessário defini-lás com o bloco <code>variable</code> na qual o programador pode definir o seu tipo, assim como descrição e checagem do que foi inserido.</p>
+<p>Exemplo de um <code>resource</code> de variavel:
+<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">&quot;image_id&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;example description&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>As variáveis por padrão são definidas sem valor padrão e como sendo obrigatórias, portanto se não forem preenchidas em um arquivo <code>.tfvars</code>, que pode ser definido tanto no formato <code>.json</code> quanto padrão do <em>Terraform</em>, será necessário inseri-las manualmente</p>
+<p>Exemplo de um arquivo <code>.tfvars.json</code> para definições de variáveis:
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;image_id&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ami-1234&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<h3 id="iteracao">Iteração<a class="headerlink" href="#iteracao" title="Permanent link">&para;</a></h3>
+<p>O Terraform também oferece mecanismos para criar vários recursos a partir de um bloco só, nominalmente os construtores <code>count</code> e <code>for_each</code>.</p>
+<p>O <code>count</code> quando definido cria o número especificado de cópias de um recurso, então por exemplo, quando queremos criar 5 instâncias com as mesmas configurações é melhor usar o <code>count</code>.</p>
+<p>Exemplo de um <code>resource</code> de instânica aws com uso de <code>count</code>:
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;app_server&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">count</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="w"></span>
+<span class="w">    </span><span class="na">ami</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ami-1234&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="na">instance_type</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;t2.micro&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="na">associate_public_ip_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="w"></span>
+<span class="w">    </span><span class="na">key_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bernardo&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">subnet_id</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_subnet.subnet_projeto.id</span><span class="w"></span>
+<span class="w">    </span><span class="na">vpc_security_group_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">aws_security_group.custom_sec_group[lookup</span><span class="p">(</span><span class="nv">var.security_group_vars</span><span class="p">,</span><span class="w"> </span><span class="nv">each.value.security_group_name</span><span class="p">,</span><span class="w"> </span><span class="kt">null</span><span class="p">).</span><span class="nv">name].id</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">    </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="na">Name</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;instance-${count.index}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>Se quer maior flexibilidade na criação de novos recursos a partir de um mesmo bloco de código, é recomendado o uso do <code>for_each</code>,  que quando definido a partir de uma lista ou dicionário cria um objeto chamado <code>each</code>
+que itera sobre os valores de cada um dos índicies ou chaves.</p>
+<p>Exemplo de um <code>resource</code> de instânica aws com uso de <code>for_each</code>:
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">&quot;aws_instance&quot;</span><span class="w"> </span><span class="nv">&quot;app_server&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">for_each</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">var.instance_vars</span><span class="w"></span>
+<span class="w">    </span><span class="na">ami</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.image_id</span><span class="w"></span>
+<span class="w">    </span><span class="na">instance_type</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.host_type</span><span class="w"></span>
+<span class="w">    </span><span class="na">associate_public_ip_address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="w"></span>
+<span class="w">    </span><span class="na">key_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;bernardo&quot;</span><span class="w"></span>
+
+<span class="w">    </span><span class="na">subnet_id</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_subnet.subnet_projeto.id</span><span class="w"></span>
+<span class="w">    </span><span class="na">vpc_security_group_ids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">aws_security_group.custom_sec_group[lookup</span><span class="p">(</span><span class="nv">var.security_group_vars</span><span class="p">,</span><span class="w"> </span><span class="nv">each.value.security_group_name</span><span class="p">,</span><span class="w"> </span><span class="kt">null</span><span class="p">).</span><span class="nv">name].id</span><span class="p">]</span><span class="w"></span>
+
+<span class="w">    </span><span class="nb">tags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="na">Name</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.image_name</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<h3 id="rquisicoes-para-providers">Rquisições para Providers<a class="headerlink" href="#rquisicoes-para-providers" title="Permanent link">&para;</a></h3>
+<p>Caso queira informações da plataforma de serviço na web para qual está desenvolvendo seu código, o módulo <code>data</code> irá te auxiliar. Com ele é possível requisitar informações externas ao seu ambiente local, como as imagens de uma região específica, ou recursos externos a sua infraestrutura.</p>
+<p>Exemplo de um módulo <code>data</code> para obter as zonas de disponibilidade de uma região:
+<div class="highlight"><pre><span></span><code><span class="kr">data</span><span class="w"> </span><span class="nc">&quot;aws_availability_zones&quot;</span><span class="w"> </span><span class="nv">&quot;available&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<h3 id="outputs">Outputs<a class="headerlink" href="#outputs" title="Permanent link">&para;</a></h3>
+<p>O Terraform também permite formatar as respostas de seu programa após este ter sido aplicado por meio do módulo <code>output</code>, Assim é possível imprimir informações que você só pode ser capaz de obter após a criação efetiva de um recurso, como por exempo, o ip designado para uma instância.</p>
+<p>Exemplo de um módulo <code>output</code> para lsitar as senhas de acesso dos usuários criados:
+<div class="highlight"><pre><span></span><code><span class="kr">output</span><span class="w"> </span><span class="nv">&quot;password&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Password of the created users&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="err">for</span><span class="w"> </span><span class="err">password</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="nv">aws_iam_user_login_profile.login_bernardo</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">password</span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<h2 id="agora-e-sua-vez">Agora é sua vez!<a class="headerlink" href="#agora-e-sua-vez" title="Permanent link">&para;</a></h2>
+<p>Tendo uma ideia de como funcionam e como usar as ferramentas fornecidas pelo <em>Terraform</em> agora você pode começar a criar seu próprio IaC, Vasculhe a <a href="(https://registry.terraform.io/providers/hashicorp/aws/latest/docs)">documentação oficial</a> e os <a href="https://developer.hashicorp.com/terraform/tutorials">tutoriais</a> oferecidos tanto pela HashiCorp assim como terceiros para desenvolver a aplicação que deseja!</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 / Bernardo Cunha Capoferri / bernardocc@al.insper.edu.br
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["instant", "navigation.expand", {"tabs": true}], "search": "assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.d6c3db9e.min.js"></script>
+      
+    
+  </body>
+</html>
