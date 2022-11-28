@@ -6,6 +6,7 @@
 - **Contato:** bernardocc@al.insper.edu.br
 - **Ano:** 2022
 
+Agradecimentos a Francisco Pinheiro Janela por permitir o uso deste template.
 
 # Como Operar com o meu programa:
 
@@ -71,14 +72,20 @@ Em sua maioria, as instruções de uso de cada uma das funcionalidades está aut
 
 - Ao deletar um Usuário, o usuário não poderá ser recuperado, e todas as configurações de políticas atreladas também serão descartadas, mas as políticas em si ainda continuarão existindo.
 
+#### Serviço web High Availability
+
+- O serviço de alta disponibilidade na web é fixo, podendo ser alterado um booleano que define se este será criado ou não e o par de chaves que será associado às instâncias.
+
+- Para verificar o funcionamento do sistema de serviço na web é necessário acessar o DNS do load-balancer que é um dos *outputs* do Terraform, ou a partir do *dashboard* da AWS. A página deverá conter o ip interno da instancia e um valor de *nonce*
+
+- Para verificar a criação de uma nova instância automática acesse a instância via SSH, usando seu par de chaves e rode o comando:
+``` sh 
+$ ssh ubuntu@<ip da sua instância>
+$ stress --cpu 8 --timeout 300
+```
+Espere entre 4-5 minutos e verifique se outra instância foi criada.
+
 # Tutorial do terraform:
-
-## Começando
-
-Para seguir esse tutorial é necessário:
-
-- **Tecnologias:** Terraform, Python
-- **Documentos:** [Terraform AWS Docs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
 ## O que é Terraform?
 
@@ -91,45 +98,135 @@ O Terraform contém no mínimo um arquivo main.tf, ondem devem ser definido as s
 - os provedores dos serviços na nuvem
 - A região na qual a infraestrutura será construida
 
-Com estes items definidos é possível começar a criar sua infraestrutura, para isso o Terraform tem os **resources**, que efetivamente são as partes dela, como instâncias, grupos de segurança, VPCs etc...
+### Recursos
 
-??? Exemplo
-    Exemplo de um **resource** de instânica aws:
-    ``` python 
-    resource "aws_instance" "app_server" {
-        ami             = "ami-123"
-        instance_type   = "t2.micro"
-        associate_public_ip_address = true
-        key_name = "bernardo"
+Com estes items definidos é possível começar a criar sua infraestrutura, para isso o Terraform tem os `resources`, que efetivamente são as partes dela, como instâncias, grupos de segurança, VPCs etc...
 
-        subnet_id       = aws_subnet.subnet_projeto.id
-        vpc_security_group_ids = ["example_sec_group"]
+Exemplo de um `resource` de instânica aws:
+``` terraform 
+resource "aws_instance" "app_server" {
+    ami             = "ami-123"
+    instance_type   = "t2.micro"
+    associate_public_ip_address = true
+    key_name = "bernardo"
 
-        tags = {
-            Name          = "exemplo"
-        }
+    subnet_id       = aws_subnet.subnet_projeto.id
+    vpc_security_group_ids = ["example_sec_group"]
+
+    tags = {
+        Name        = "exemplo"
     }
-    ``` 
+}
+``` 
 
 
 Com os recursos, o programador consegue criar elementos fixos, e assim como linguagens de código tradicional ele permite a criação de recursos com variáveis o que acaba sendo útil para criar recursos dinâmicamente.
 
-??? Exemplo
-    Exemplo de um **resource** de instânica aws com uso de variáveis:
-    ``` python 
-    resource "aws_instance" "app_server" {
-        ami             = var.image_id
-        instance_type   = var.host_type
-        associate_public_ip_address = true
-        key_name = "bernardo"
+Exemplo de um `resource` de instânica aws com uso de variáveis:
+``` terraform 
+resource "aws_instance" "app_server" {
+    ami             = var.image_id
+    instance_type   = var.host_type
+    associate_public_ip_address = true
+    key_name = "bernardo"
 
-        subnet_id       = aws_subnet.subnet_projeto.id
-        vpc_security_group_ids = [var.sec_group]
+    subnet_id       = aws_subnet.subnet_projeto.id
+    vpc_security_group_ids = [var.sec_group]
 
-        tags = {
-            Name          = var.image_name
-        }
+    tags = {
+        Name        = var.image_name
     }
-    ```
+}
+```
 
-Mas ao contrário de linguagens tradicionais, não é possível simplesmente declarar variáveis, para isso é necessário defini-lás com o bloco **variable** na qual o programador pode definir o seu tipo, assim como descrição e checagem do que foi inserido.
+### Variáveis
+
+Mas ao contrário de linguagens tradicionais, não é possível simplesmente declarar variáveis, para isso é necessário defini-lás com o bloco `variable` na qual o programador pode definir o seu tipo, assim como descrição e checagem do que foi inserido.
+
+Exemplo de um `resource` de variavel:
+``` terraform
+variable "image_id" {
+    description = "example description"
+    type = string
+}
+```
+
+As variáveis por padrão são definidas sem valor padrão e como sendo obrigatórias, portanto se não forem preenchidas em um arquivo `.tfvars`, que pode ser definido tanto no formato `.json` quanto padrão do *Terraform*, será necessário inseri-las manualmente
+
+Exemplo de um arquivo `.tfvars.json` para definições de variáveis:
+``` json
+{
+    "image_id" : "ami-1234"
+}
+```
+
+### Iteração
+
+O Terraform também oferece mecanismos para criar vários recursos a partir de um bloco só, nominalmente os construtores `count` e `for_each`.
+
+O `count` quando definido cria o número especificado de cópias de um recurso, então por exemplo, quando queremos criar 5 instâncias com as mesmas configurações é melhor usar o `count`.
+
+Exemplo de um `resource` de instânica aws com uso de `count`:
+``` terraform
+resource "aws_instance" "app_server" {
+    count           = 5
+    ami             = "ami-1234"
+    instance_type   = "t2.micro"
+    associate_public_ip_address = true
+    key_name = "bernardo"
+
+    subnet_id       = aws_subnet.subnet_projeto.id
+    vpc_security_group_ids = [aws_security_group.custom_sec_group[lookup(var.security_group_vars, each.value.security_group_name, null).name].id]
+
+    tags = {
+        Name          = "instance-${count.index}"
+    }
+```
+
+Se quer maior flexibilidade na criação de novos recursos a partir de um mesmo bloco de código, é recomendado o uso do `for_each`,  que quando definido a partir de uma lista ou dicionário cria um objeto chamado `each`
+que itera sobre os valores de cada um dos índicies ou chaves.
+
+Exemplo de um `resource` de instânica aws com uso de `for_each`:
+``` terraform
+resource "aws_instance" "app_server" {
+    for_each        = var.instance_vars
+    ami             = each.value.image_id
+    instance_type   = each.value.host_type
+    associate_public_ip_address = true
+    key_name = "bernardo"
+
+    subnet_id       = aws_subnet.subnet_projeto.id
+    vpc_security_group_ids = [aws_security_group.custom_sec_group[lookup(var.security_group_vars, each.value.security_group_name, null).name].id]
+
+    tags = {
+        Name          = each.value.image_name
+    }
+}
+```
+
+### Rquisições para Providers
+
+Caso queira informações da plataforma de serviço na web para qual está desenvolvendo seu código, o módulo `data` irá te auxiliar. Com ele é possível requisitar informações externas ao seu ambiente local, como as imagens de uma região específica, ou recursos externos a sua infraestrutura.
+
+Exemplo de um módulo `data` para obter as zonas de disponibilidade de uma região:
+``` terraform
+data "aws_availability_zones" "available" {
+    state = "available"
+}
+```
+
+### Outputs
+
+O Terraform também permite formatar as respostas de seu programa após este ter sido aplicado por meio do módulo `output`, Assim é possível imprimir informações que você só pode ser capaz de obter após a criação efetiva de um recurso, como por exempo, o ip designado para uma instância.
+
+Exemplo de um módulo `output` para lsitar as senhas de acesso dos usuários criados:
+``` terraform
+output "password" {
+    description = "Password of the created users"
+    value = [for password in aws_iam_user_login_profile.login_bernardo : password]
+}
+```
+
+## Agora é sua vez!
+
+Tendo uma ideia de como funcionam e como usar as ferramentas fornecidas pelo *Terraform* agora você pode começar a criar seu próprio IaC, Vasculhe a [documentação oficial]((https://registry.terraform.io/providers/hashicorp/aws/latest/docs)) e os [tutoriais](https://developer.hashicorp.com/terraform/tutorials) oferecidos tanto pela HashiCorp assim como terceiros para desenvolver a aplicação que deseja!
