@@ -74,6 +74,9 @@ Em sua maioria, as instruções de uso de cada uma das funcionalidades está aut
 
 #### Serviço web High Availability
 
+??? Warning
+    A implementação do serviço de alta disponibilidade utilizou o recurso `launch_configuration` da AWS, que após o dia 31 de Dezembro de 2022 deixará de ter suporte, em seu lugar deve ser utilizado o recurso `launch_template`.
+
 - O serviço de alta disponibilidade na web é fixo, podendo ser alterado um booleano que define se este será criado ou não e o par de chaves que será associado às instâncias.
 
 - Para verificar o funcionamento do sistema de serviço na web é necessário acessar o DNS do load-balancer que é um dos *outputs* do Terraform, ou a partir do *dashboard* da AWS. A página deverá conter o ip interno da instancia e um valor de *nonce*
