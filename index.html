@@ -304,6 +304,10 @@
 </li>
 </ul>
 <h4 id="servico-web-high-availability">Serviço web High Availability<a class="headerlink" href="#servico-web-high-availability" title="Permanent link">&para;</a></h4>
+<details class="warning">
+<summary>Warning</summary>
+<p>A implementação do serviço de alta disponibilidade utilizou o recurso <code>launch_configuration</code> da AWS, que após o dia 31 de Dezembro de 2022 deixará de ter suporte, em seu lugar deve ser utilizado o recurso <code>launch_template</code>.</p>
+</details>
 <ul>
 <li>
 <p>O serviço de alta disponibilidade na web é fixo, podendo ser alterado um booleano que define se este será criado ou não e o par de chaves que será associado às instâncias.</p>
